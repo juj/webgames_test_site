@@ -49,7 +49,7 @@ WGR.register({
           'Yli 2 Gt:n osoitteisiin sijoitetut datasegmentit alustetaan oikein.'));
       } else {
         r.field(name32, failed(error));
-        r.warn(tr('A WebAssembly module with a data segment placed at an address of 2 GB or above fails to load. '
+        r.error(tr('A WebAssembly module with a data segment placed at an address of 2 GB or above fails to load. '
           + 'Games that place their static data above 2 GB will not start; most games do not do this.',
           'WebAssembly-moduuli, jonka datasegmentti on sijoitettu 2 Gt:n osoitteeseen tai sen yläpuolelle, ei lataudu. '
           + 'Pelit, jotka sijoittavat staattisen datansa yli 2 Gt:n osoitteisiin, eivät käynnisty; useimmat pelit eivät tee näin.') + wk);
@@ -84,7 +84,7 @@ WGR.register({
         '64-bittisten WebAssembly-muistien (Wasm64) datasegmentit alustetaan oikein.'));
     } else {
       r.field(name64, failed(error));
-      r.warn(tr('A Wasm64 module with a data segment fails to load. Games built for Wasm64 will not run; most games still ship 32-bit builds.',
+      r.error(tr('A Wasm64 module with a data segment fails to load. Games built for Wasm64 will not run; most games still ship 32-bit builds.',
         'Wasm64-moduuli, jossa on datasegmentti, ei lataudu. Wasm64:lle käännetyt pelit eivät toimi; useimmat pelit julkaistaan kuitenkin yhä 32-bittisinä.') + wk);
     }
   },
