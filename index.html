@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-fi="Onko laitteesi ja selaimesi valmis WebGPU-peleihin?">Is your device and browser ready to play WebGPU games?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="lang-switch" aria-label="Language / Kieli"><a href="?lang=fi" data-lang="fi" hreflang="fi">Suomi</a> | <a href="?lang=en" data-lang="en" hreflang="en">English</a></nav>
+    <h1 data-fi="Onko laitteesi ja selaimesi valmis WebGPU-peleihin?">Is your device and browser ready to play WebGPU games?</h1>
+    <p class="subtitle" data-fi="Tämä sivu testaa laitteesi WebGPU-tuen ja tarkistaa tunnetut selain- ja ajuriongelmat, jotka vaikuttavat WebGPU-peleihin. Mitään ei lähetetä minnekään, eikä tämä sivusto kerää mitään analytiikkatietoja; kaikki tarkistukset suoritetaan paikallisesti selaimessasi.">This page tests WebGPU support on your device and checks for known browser and driver bugs that affect WebGPU games.
+      Nothing is uploaded anywhere, this site does not collect any analytics; all checks run locally in your browser.</p>
+  </header>
+
+  <div id="verdict" class="verdict verdict-running">
+    <div class="verdict-headline" data-fi="Tarkistuksia suoritetaan…">Running checks…</div>
+  </div>
+  <div class="toolbar">
+    <button id="copy-report" disabled data-fi="Kopioi raportti leikepöydälle">Copy report to clipboard</button>
+  </div>
+
+  <section id="section-context">
+    <h2 data-fi="WebGPU-adapteri ja -konteksti">WebGPU adapter and context</h2>
+    <div class="cards"></div>
+  </section>
+
+  <section id="section-features">
+    <h2 data-fi="WebGPU-ominaisuudet">WebGPU features</h2>
+    <div class="cards"></div>
+  </section>
+
+  <section id="section-bugs">
+    <h2 data-fi="Tunnetut selain- ja ajuribugit">Known browser and driver bugs</h2>
+    <p class="section-note" data-fi="Jokainen alla oleva tarkistus testaa tunnettua bugia. Korostetulla selaimen nimellä merkityt tarkistukset on raportoitu käyttämällesi selainmoottorille. Mahdollisuuksien mukaan tarkistus testaa todellista toimintaa, joten jo korjatut bugit näkyvät OK-tilassa.">Each check below tests for a known bug. Checks tagged with a highlighted browser name were reported against the browser engine you are using.
+      Where possible, the check tests the actual behavior, so bugs that have been fixed show up as OK.</p>
+    <div class="cards"></div>
+  </section>
+
+  <footer class="page-footer"><span data-fi="Yhteystiedot:">Contact:</span> <a href="https://juj.fi/">https://juj.fi/</a></footer>
+
+  <noscript><p class="note note-error">JavaScript must be enabled to run the checks. / Tarkistusten suorittaminen vaatii JavaScriptin.</p></noscript>
+
+  <!-- Framework -->
+  <script src="js/framework.js"></script>
+
+  <!-- Environment, adapter and context (these run first and set up the shared GPUDevice) -->
+  <script src="tests/environment.js"></script>
+  <script src="tests/context.js"></script>
+
+  <!-- Features -->
+  <script src="tests/features-baseline.js"></script>
+  <script src="tests/features-optional.js"></script>
+  <script src="tests/vertex-format-snorm10-10-10-2.js"></script>
+
+  <!-- Chrome / Chromium bugs -->
+  <script src="tests/crbug-481364093.js"></script>
+  <script src="tests/crbug-519877025.js"></script>
+  <script src="tests/crbug-520126488.js"></script>
+  <script src="tests/crbug-519862908.js"></script>
+  <script src="tests/crbug-581018327.js"></script>
+  <script src="tests/crbug-349972045.js"></script>
+  <script src="tests/crbug-1133233.js"></script>
+  <script src="tests/crbug-446920095.js"></script>
+
+  <!-- Firefox bugs -->
+  <script src="tests/firefox-2023423.js"></script>
+  <script src="tests/firefox-1283029.js"></script>
+  <script src="tests/firefox-2013404.js"></script>
+  <script src="tests/firefox-1964081.js"></script>
+  <script src="tests/firefox-1994733.js"></script>
+  <script src="tests/firefox-2022805.js"></script>
+  <script src="tests/firefox-2023418.js"></script>
+  <script src="tests/firefox-2023421.js"></script>
+  <script src="tests/firefox-2023425.js"></script>
+  <script src="tests/firefox-1924328.js"></script>
+
+  <!-- Safari / WebKit bugs -->
+  <script src="tests/webkit-219005.js"></script>
+  <script src="tests/webkit-304639.js"></script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => WGR.runAll());
+  </script>
+</body>
+</html>
